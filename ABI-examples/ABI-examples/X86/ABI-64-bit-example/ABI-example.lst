@@ -1,0 +1,57 @@
+GAS LISTING ABI-X86.s 			page 1
+
+
+ GNU assembler version 2.37 (x86_64-redhat-linux)
+	 using BFD version version 2.37-27.fc36.
+ options passed	: -g -agls --64 
+ input file    	: ABI-X86.s
+ output file   	: ABI-example.o
+ target        	: x86_64-redhat-linux-gnu
+ time stamp    	: 2022-11-03T14:43:57.000-0400
+
+GAS LISTING ABI-X86.s 			page 2
+
+
+   1              		.intel_syntax	noprefix
+   2              		.global _start
+   3              		.equ	sys_exit, 60
+   4              		.equ	sys_write, 1
+   5              		.text
+   6              	_start:
+   7 0000 48C7C001 		mov	rax, sys_write	/* write */
+   7      000000
+   8 0007 48C7C701 		mov	rdi, 1		/* select standard output */
+   8      000000
+   9 000e 488D3425 		lea	rsi,MSG		/* message's address */
+   9      00000000 
+  10 0016 488B1425 		mov	rdx,MLEN	/* message length */
+  10      00000000 
+  11 001e 0F05     		syscall			/* display message */
+  12              	
+  13 0020 48C7C700 		mov	rdi, 0		/* clear ebx */ 
+  13      000000
+  14 0027 48C7C03C 		mov	rax, sys_exit	/* terminate program */ 
+  14      000000
+  15 002e 0F05     		syscall 
+  16              	
+  17 0030 17000000 	MLEN:	.quad	MSGLEN
+  17      00000000 
+  18 0038 36342D62 	MSG:	.ascii	"64-bit X86 ABI program\n"
+  18      69742058 
+  18      38362041 
+  18      42492070 
+  18      726F6772 
+  19              		.equ	MSGLEN, .-MSG
+  20              		.end
+GAS LISTING ABI-X86.s 			page 3
+
+
+DEFINED SYMBOLS
+           ABI-X86.s:6      .text:0000000000000000 _start
+           ABI-X86.s:3      *ABS*:000000000000003c sys_exit
+           ABI-X86.s:4      *ABS*:0000000000000001 sys_write
+           ABI-X86.s:18     .text:0000000000000038 MSG
+           ABI-X86.s:17     .text:0000000000000030 MLEN
+                            *ABS*:0000000000000017 MSGLEN
+
+NO UNDEFINED SYMBOLS

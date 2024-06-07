@@ -1,0 +1,71 @@
+GAS LISTING RISCV-ABI.s 			page 1
+
+
+ GNU assembler version 2.38 (riscv64-linux-gnu)
+	 using BFD version (GNU Binutils for Ubuntu) 2.38.
+ options passed	: -g -asgl -march=rv64i 
+ input file    	: RISCV-ABI.s
+ output file   	: ABI-example.o
+ target        	: riscv64-unknown-linux-gnu
+ time stamp    	: 2022-11-08T13:14:17.000+0000
+
+GAS LISTING RISCV-ABI.s 			page 2
+
+
+   1              			.equ	sys_exit, 93
+   2              			.equ	sys_write, 64
+   3              	
+   4              			.global	_start
+   5              			.text
+   6              	_start:
+   7 0000 1B051000 			addiw	a0,zero,1		# select standard output
+   8 0004 97050000 			lw	a1, BUFPTR		# buffer's address
+   8      83A50500 
+   9 000c 17060000 			lw	a2, LEN			# message's length
+   9      03260600 
+  10 0014 9B080004 			addiw	a7,zero,sys_write	# display message
+  11 0018 73000000 			ecall
+  12              	
+  13 001c 9B08D005 			addiw	a7,zero,sys_exit	# end program
+  14 0020 73000000 			ecall		
+  15              	
+  16 0024 52495343 	MESG:		.ascii "RISC-V ABI program\n"
+  16      2D562041 
+  16      42492070 
+  16      726F6772 
+  16      616D0A
+  17              			.equ	MESGLEN, .-MESG
+  18 0037 13000000 	LEN:		.word	MESGLEN
+  19 003b 00000000 	BUFPTR:		.word	MESG
+  20 003f 00       			.end
+GAS LISTING RISCV-ABI.s 			page 3
+
+
+DEFINED SYMBOLS
+         RISCV-ABI.s:1      *ABS*:000000000000005d sys_exit
+         RISCV-ABI.s:2      *ABS*:0000000000000040 sys_write
+         RISCV-ABI.s:6      .text:0000000000000000 _start
+         RISCV-ABI.s:7      .text:0000000000000000 $x
+         RISCV-ABI.s:7      .text:0000000000000000 .L0 
+         RISCV-ABI.s:19     .text:000000000000003b BUFPTR
+         RISCV-ABI.s:8      .text:0000000000000004 .L0 
+         RISCV-ABI.s:18     .text:0000000000000037 LEN
+         RISCV-ABI.s:9      .text:000000000000000c .L0 
+         RISCV-ABI.s:10     .text:0000000000000014 .L0 
+         RISCV-ABI.s:11     .text:0000000000000018 .L0 
+         RISCV-ABI.s:13     .text:000000000000001c .L0 
+         RISCV-ABI.s:14     .text:0000000000000020 .L0 
+         RISCV-ABI.s:16     .text:0000000000000024 MESG
+         RISCV-ABI.s:16     .text:0000000000000024 $d
+         RISCV-ABI.s:17     *ABS*:0000000000000013 MESGLEN
+         RISCV-ABI.s:20     .text:000000000000003f .L0 
+                            .text:0000000000000000 .L0 
+         RISCV-ABI.s:20     .text:000000000000003f .L0 
+                       .debug_str:0000000000000000 .L0 
+                       .debug_str:000000000000000c .L0 
+                       .debug_str:0000000000000025 .L0 
+         RISCV-ABI.s:20     .text:000000000000003f $x
+         RISCV-ABI.s:8      .text:0000000000000004 .L0 
+         RISCV-ABI.s:9      .text:000000000000000c .L0 
+
+NO UNDEFINED SYMBOLS
